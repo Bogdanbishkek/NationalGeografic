@@ -1,0 +1,27 @@
+#border(@w,@color,@style: solid){
+  border-width: @w;
+  border-style: @style;
+  border-color: @color;
+}
+
+
+.icon(@url, @repeat: no-repeat, @positon: ""){
+  background: url("@{pathToIcon}@{url}.png") ~"@{repeat}" ~"@{positon}";
+}
+
+.fontSize(@size) when (isnumber(@size)){
+  font-size: ~"@{size}em";
+}
+
+.hSize(@size, @step: 3,@count:0) when (@count < 6){
+  @number: @count+1;
+  h@{number}{
+    font-size: @size - (@count*@step);
+  }
+  .hSize(@size, @step,@count+1);
+}
+
+.whitebox(){
+  border: 1px solid #e8e8e8;
+  background-color: #fff;
+}
